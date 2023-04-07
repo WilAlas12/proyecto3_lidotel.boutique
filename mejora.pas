@@ -1,8 +1,6 @@
 program ingresados;
 uses crt,sysutils;
 
-
-
 var
 usuario: record
 nombre:string;
@@ -24,22 +22,38 @@ gotoxy(2,3);
 			readln(usuario.nombre);
 			writeln('introduzca el apellido: ');
 			readln(usuario.apellido);
+
+			//se establece el nombre del archivo en foma de string
+			
+			filename:=concat(usuario.nombre+' '+usuario.apellido, '.txt');
+			//concadenamos el nombre del archivo con la extencion txt
+			
+			while fileExists(filename) do
+			begin
+			writeln('ya existe una reservacion a ese nombre');
+			writeln();
+			writeln('introduzca el nombre: ');
+			readln(usuario.nombre);
+			writeln('introduzca el apellido: ');
+			readln(usuario.apellido);
+			
+			filename:=concat(usuario.nombre+' '+usuario.apellido, '.txt');
+			//concadenamos el nombre del archivo con la extencion txt
+			
+			end;
+			
+			//asignamos el nombre del archivo;	
+			assign(fichero, filename);
+			//creamos el archivo
+			rewrite(fichero);
+			
 			writeln('introduzca el numero de cedula: ');			
 			readln(usuario.ci);
 			writeln('introduzca su num de telefono: ');
 			readln(usuario.tlf);
 			writeln('introduzca sus dias de estadia: ');
 			readln(usuario.estadia);	
-		
-			//se establece el nombre del archivo en foma de string
-			
-			filename:=concat(usuario.nombre+' '+usuario.apellido, '.txt');
-			//concadenamos el nombre del archivo con la extencion txt
-			
-			//asignamos el nombre del archivo;	
-			assign(fichero, filename);
-			//creamos el archivo
-			rewrite(fichero);
+
 			
 			writeln(fichero);
 			writeln(fichero, usuario.nombre);	
