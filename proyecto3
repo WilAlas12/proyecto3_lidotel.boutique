@@ -2460,7 +2460,9 @@ begin
 		end;
 		
 		'2':begin
-		
+			gotoxy(30,4);writeln('  /////////////////'); 
+			gotoxy(30,5);writeln(' / Vuelva pronto /');
+			gotoxy(30,6);writeln('/////////////////');
 		end;
 			
 	end;
