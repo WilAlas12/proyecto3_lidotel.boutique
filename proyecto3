@@ -2268,7 +2268,7 @@ begin
 					
 				miembro:=(nom+' -Apellido: '+apell+' -Email: '+email); {............................................ LA VERIABLE MIEMBRO UNE LOS DATOS NO NUMERICOS QUE SE PIDIERON }
 							
-				reset(menores);
+				
 										
 				append(personas); {............................................................................................................. ABRIMOS EL ARCHIVO EN MODO AGREGAR }
 				
@@ -2282,6 +2282,8 @@ begin
 				
 					begin
 					
+					reset(menores);
+					
 					writeln(personas,' Hijos:');
 					writeln(personas);
 					
@@ -2293,6 +2295,8 @@ begin
 						writeln(personas,linea_god);
 						
 						end;
+						
+						close(menores);
 													
 					end;
 					
@@ -2301,15 +2305,16 @@ begin
 					
 							
 				close(personas);{................................................................................................................................ CERRAMOS EL ARCHIVO }
+							
 				
-				close(menores);
+				if (opc5='s') then
 				
-				opc5:='';
-					
+				begin					
 				rewrite(menores);
-				
 				close(menores);	
-					
+				end;
+				
+				opc5:='';	
 									
 				end;
 			
